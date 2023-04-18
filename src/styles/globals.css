@@ -1,27 +1,94 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: black;
+  --color: rgb(0, 206, 0);
+  --font: "Fira Code";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--color);
+  font-family: var(--font);
+}
+
+.code {
+  width: 100%;
+  height: 100vh;
+
+  min-height: 100%;
+  max-height: 100%;
+  
+  background-color: var(--bg);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 2rem;
+}
+
+.code-pre {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  resize: none;
+  background: transparent;
+  line-height: 2;
+  font-family: inherit;
+
+  font-size: 1rem;
+}
+
+.code-area {
+  position: absolute;
+  bottom: -100px;
+  height: 0;
+  width: 0;
+  border: 0;
+  outline: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.code-cursor {
+  display: inline-block;
+  color: #2e3d48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: var(--color);
+  }
+}
+
+@-moz-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: var(--color);
+  }
+}
+
+
+.code-bottom {
+  height: 50px;
 }
