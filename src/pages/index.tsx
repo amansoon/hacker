@@ -11,6 +11,7 @@ import { code } from "@/data/code";
 
 import Draggable, { DraggableBounds } from "react-draggable";
 import Slider from "rc-slider";
+import ReactDropdown from "react-dropdown";
 
 export default function Home() {
   const [speed, setSpeed] = useState(10);
@@ -71,52 +72,7 @@ export default function Home() {
           <div className="code-bottom"> </div>
         </pre>
       </div>
-
-      <Draggable>
-        <div className="window">
-          <div className="window__header">
-            <h4 className="window__title"> Settings </h4>
-            <div className="window__close">{"x"}</div>
-          </div>
-          <div className="window__body">
-            <div className="window__optionlist">
-              {/* color */}
-              <div className="window__option">
-                <span> Color </span>
-                <span> .... </span>
-              </div>
-              {/* speed */}
-              <div className="window__option">
-                <span> speed </span>
-                <span> .... </span>
-              </div>
-              {/* font size */}
-              <div className="window__option">
-                <span> Font Size </span>
-                <FontSlider />
-              </div>
-              {/* font family */}
-              <div className="window__option">
-                <span> Font Family </span>
-                <select name="" id="">
-                  <option value=""> Font 1 </option>
-                  <option value=""> Font 1 </option>
-                  <option value=""> Font 1 </option>
-                  <option value=""> Font 1 </option>
-                  <option value=""> Font 1 </option>
-                </select>
-              </div>
-              {/* source */}
-              <div className="window__option">
-                <span> Source </span>
-                <div>
-                  <input type="file" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Draggable>
+      <Window />
     </main>
   );
 }
@@ -124,11 +80,77 @@ export default function Home() {
 const FontSlider = () => {
   return (
     <div className="window__slider">
-      <Slider
-        min={8}
-        max={50}
-        step={1}
-      />
+      <Slider min={8} max={50} step={1} />
     </div>
+  );
+};
+
+const Window = () => {
+
+  const options = [
+    "fira code",
+    "menorope",
+    "roboto",
+    "Cascadia Mono",
+    "Sans Serif",
+    "Space Mono",
+  ]
+
+  const handleFontChange = (e) => {
+
+  }
+
+  return (
+    <Draggable>
+      <div className="window">
+        <div className="window__header">
+          <h4 className="window__title"> Settings </h4>
+          <div className="window__close">{"x"}</div>
+        </div>
+        <div className="window__body">
+          <div className="window__optionlist">
+            {/* color */}
+            <div className="window__option">
+              <span className="window__option-name"> Color </span>
+              <span> .... </span>
+            </div>
+            {/* speed */}
+            <div className="window__option">
+              <span className="window__option-name"> Speed </span>
+              <FontSlider />
+              <div>24</div>
+            </div>
+            {/* font size */}
+            <div className="window__option">
+              <span className="window__option-name"> Font size </span>
+              <FontSlider />
+              <div>24</div>
+            </div>
+            {/* font family */}
+            <div className="window__option">
+              <span> Font Family </span>
+              <ReactDropdown
+                options={options}
+                onChange={handleFontChange}
+                value={options[0]}
+                placeholder="Select an option"
+                className="dropdown"
+                controlClassName='dropdown-control'
+                placeholderClassName='dropdown-placeholder'
+                menuClassName='dropdown-menu'
+                arrowClassName='dropdown-arrow' 
+              />
+            </div>
+            {/* source */}
+            <div className="window__option">
+              <span> Source </span>
+              <div>
+                <input type="file" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Draggable>
   );
 };
