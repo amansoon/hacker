@@ -1,0 +1,46 @@
+
+.header {
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid rgb(60, 60, 60);
+    background-color: rgb(0, 0, 0);
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    margin-right: 100px;
+}
+
+.nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav__item {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.nav__item:hover {
+    background-color: rgb(33, 33, 33);
+    color: rgb(217, 217, 217);
+    outline: 1px solid white;
+}
+
+.actions {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.action {
+    padding: 0.25rem;
+}

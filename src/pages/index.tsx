@@ -13,6 +13,7 @@ import Draggable, { DraggableBounds } from "react-draggable";
 import Slider from "rc-slider";
 import ReactDropdown from "react-dropdown";
 import { ChevronDown, ChevronUp } from "react-feather";
+import Header from "@/components/Header";
 
 export default function Home() {
   const [speed, setSpeed] = useState(10);
@@ -65,6 +66,7 @@ export default function Home() {
 
   return (
     <main className="">
+      <Header />
       <div className="code" ref={codeRef}>
         <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
         <pre className="code-pre">
@@ -111,18 +113,19 @@ const Window = () => {
                 <button className="window-magenta window-color"> </button>
                 <button className="window-orange window-color"> </button>
               </div>
+              <input type="text" value={24} />
             </div>
             {/* speed */}
             <div className="window__option">
               <span className="window__option-name"> Speed </span>
               <FontSlider />
-              <div>24</div>
+              <input type="text" value={24} />
             </div>
             {/* font size */}
             <div className="window__option">
               <span className="window__option-name"> Font size </span>
               <FontSlider />
-              <div>24</div>
+              <input type="text" value={24} />
             </div>
             {/* font family */}
             <div className="window__option">
