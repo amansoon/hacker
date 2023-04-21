@@ -12,7 +12,7 @@ import { code } from "@/data/code";
 import Draggable, { DraggableBounds } from "react-draggable";
 import Slider from "rc-slider";
 import ReactDropdown from "react-dropdown";
-import { ChevronDown, ChevronUp } from "react-feather";
+import { ChevronDown, ChevronUp, Settings, X } from "react-feather";
 import Header from "@/components/Header";
 
 export default function Home() {
@@ -68,12 +68,23 @@ export default function Home() {
     <main className="">
       <Header />
       <div className="code" ref={codeRef}>
+        {/* <div className="code-wrapper"> */}
         <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
         <pre className="code-pre">
           <span>{text}</span>
           <span className="code-cursor">|</span>
-          <div className="code-bottom"> </div>
         </pre>
+
+        {/* sidebar */}
+        <div className="code-setting">
+          <button>
+            <X />
+          </button>
+          <button>
+            <Settings />
+          </button>
+        </div>
+        {/* </div> */}
       </div>
       <Window />
     </main>
@@ -94,7 +105,7 @@ const Window = () => {
   const handleFontChange = (e) => {};
 
   return (
-    <Draggable>
+    <Draggable bounds="parent">
       <div className="window">
         <div className="window__header">
           <h4 className="window__title"> Settings </h4>

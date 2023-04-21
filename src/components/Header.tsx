@@ -8,7 +8,9 @@ import screenfull from "screenfull";
 type Props = {};
 
 function Header({}: Props) {
-  const [isFullscreen, setFullscreen] = useState(false)
+  const [isFullscreen, setFullscreen] = useState(false);
+  const [isHeader, setHeader] = useState(true);
+
   const toggleFullscreen = async () => {
     if (screenfull.isEnabled) {
       await screenfull.toggle();
@@ -21,7 +23,7 @@ function Header({}: Props) {
   // }, [screenfull])
 
   return (
-    <header className={css.header}>
+    <header className={`${css.header} ${!isHeader &&  css["header--hidden"]}`}>
       <div className={css.header__wrapper}>
         <div className={css.logo}> Being | hacker </div>
         <nav className={css.nav}>
@@ -31,7 +33,7 @@ function Header({}: Props) {
           <div className={css.nav__item}> Help </div>
         </nav>
         <div className={css.actions}>
-          <button className={css.action}>
+          <button className={css.action} onClick={() => setHeader(false)}>
             {/* <Minus /> */}
             <X />
           </button>
