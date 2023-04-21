@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import css from "./header.module.css";
 import Link from "next/link";
-import { Maximize, Minimize, Minus } from "react-feather";
+import { Maximize, Minimize, Minus, X } from "react-feather";
 // import fscreen from "fscreen";
 import screenfull from "screenfull";
 
@@ -31,11 +31,12 @@ function Header({}: Props) {
           <div className={css.nav__item}> Help </div>
         </nav>
         <div className={css.actions}>
+          <button className={css.action}>
+            {/* <Minus /> */}
+            <X />
+          </button>
           <button className={css.action} onClick={() => toggleFullscreen()}>
             {isFullscreen ? <Minimize /> : <Maximize />}
-          </button>
-          <button className={css.action}>
-            <Minus />
           </button>
           {/* <button> <Maximize /> </button> */}
         </div>
