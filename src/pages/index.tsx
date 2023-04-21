@@ -12,6 +12,7 @@ import { code } from "@/data/code";
 import Draggable, { DraggableBounds } from "react-draggable";
 import Slider from "rc-slider";
 import ReactDropdown from "react-dropdown";
+import { ChevronDown, ChevronUp } from "react-feather";
 
 export default function Home() {
   const [speed, setSpeed] = useState(10);
@@ -86,19 +87,9 @@ const FontSlider = () => {
 };
 
 const Window = () => {
+  const options = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
 
-  const options = [
-    "fira code",
-    "menorope",
-    "roboto",
-    "Cascadia Mono",
-    "Sans Serif",
-    "Space Mono",
-  ]
-
-  const handleFontChange = (e) => {
-
-  }
+  const handleFontChange = (e) => {};
 
   return (
     <Draggable>
@@ -112,7 +103,14 @@ const Window = () => {
             {/* color */}
             <div className="window__option">
               <span className="window__option-name"> Color </span>
-              <span> .... </span>
+              <div className="window-colors">
+                <button className="window-red window-color"> </button>
+                <button className="window-green window-color"> </button>
+                <button className="window-blue window-color"> </button>
+                <button className="window-yellow window-color"> </button>
+                <button className="window-magenta window-color"> </button>
+                <button className="window-orange window-color"> </button>
+              </div>
             </div>
             {/* speed */}
             <div className="window__option">
@@ -135,11 +133,21 @@ const Window = () => {
                 value={options[0]}
                 placeholder="Select an option"
                 className="dropdown"
-                controlClassName='dropdown-control'
-                placeholderClassName='dropdown-placeholder'
-                menuClassName='dropdown-menu'
-                arrowClassName='dropdown-arrow' 
+                controlClassName="dropdown-control"
+                placeholderClassName="dropdown-placeholder"
+                menuClassName="dropdown-menu"
+                arrowClosed={
+                  <span className="dropdown-arrow">
+                    <ChevronDown size={18} />{" "}
+                  </span>
+                }
+                arrowOpen={
+                  <span className="dropdown-arrow">
+                    <ChevronUp size={18} />{" "}
+                  </span>
+                }
               />
+              <span> default </span>
             </div>
             {/* source */}
             <div className="window__option">

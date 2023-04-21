@@ -150,14 +150,51 @@ h6 {
 }
 
 .window__option {
-  display: flex;
-  justify-content: space-between;
-  justify-items: center;
+  display: grid;
+  grid-template-columns: 140px 1fr 100px;
+  align-items: center;
+  gap: 1rem;
 }
 
 .window__option-name {
   width: 100px;
 }
+
+.window-colors {
+  display: flex;
+  gap: 1rem;
+}
+
+.window-color {
+  height: 0.875rem;
+  width: 0.875rem;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.window-red {
+  background-color: red;
+}
+.window-green {
+  background-color: green;
+}
+.window-blue {
+  background-color: blue;
+}
+.window-yellow {
+  background-color: yellow;
+}
+.window-magenta {
+  background-color: magenta;
+}
+.window-orange {
+  background-color: orange;
+}
+
+
+
+
 
 .window__slider {
   width: 200px;
@@ -182,7 +219,7 @@ h6 {
   z-index: 5;
   width: 100%;
   height: 4px;
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(21, 21, 21);
 }
 
 /* slider track */
@@ -214,23 +251,35 @@ h6 {
 
 /* ======= react-dropdown styling =========== */
 .dropdown {
-  width: 150px;
+  width: 200px;
   /* border: 1px solid red; */
   position: relative;
 }
 
 .dropdown-control {
-   /* border: 1px solid red; */
-   white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  background-color: rgba(141, 141, 141, 0.1);
+
 }
 
 .dropdown-placeholder {
+  width: 180px;
   background-color: rgba(141, 141, 141, 0.1);
   padding: 0.5rem 0.875rem;
   color: rgb(124, 124, 124);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+.dropdown-arrow {
+  padding: 0.5rem;
+}
+
+
+
+
 
 .dropdown-menu {
   width: 100%;
@@ -258,8 +307,13 @@ h6 {
 }
 
 
+/* file input upload  */
+
+
 input {
   font-family: inherit;
+  background: rgb(16, 16, 16);
+  padding: 0.25rem;
 }
 
 input::file-selector-button {
