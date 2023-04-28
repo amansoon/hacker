@@ -12,7 +12,7 @@ import { code } from "@/data/code";
 import Draggable, { DraggableBounds } from "react-draggable";
 import Slider from "rc-slider";
 import ReactDropdown from "react-dropdown";
-import { ChevronDown, ChevronUp, Settings, X } from "react-feather";
+import * as Feather from "react-feather";
 import Header from "@/components/Header";
 
 export default function Home() {
@@ -68,7 +68,6 @@ export default function Home() {
     <main className="">
       <Header />
       <div className="code" ref={codeRef}>
-        
         {/* <div className="code-wrapper"> */}
         <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
         <pre className="code-pre">
@@ -79,10 +78,10 @@ export default function Home() {
         {/* sidebar */}
         <div className="code-setting">
           <button>
-            <X />
+            <Feather.X />
           </button>
           <button>
-            <Settings />
+            <Feather.Settings />
           </button>
         </div>
         {/* </div> */}
@@ -109,66 +108,70 @@ const Window = () => {
     <Draggable bounds="parent" handle=".window__header">
       <div className="window">
         <div className="window__header">
-          <h4 className="window__title"> Settings </h4>
-          <div className="window__close">{"x"}</div>
+          <div className="window__header-wrapper">
+            <div className="window__title"> Settings </div>
+            <button className="window__close"> <Feather.X size={20} strokeWidth={3} strokeLinecap="butt" /> </button>
+          </div>
         </div>
         <div className="window__body">
-          <div className="window__optionlist">
-            {/* color */}
-            <div className="window__option">
-              <span className="window__option-name"> Color </span>
-              <div className="window-colors">
-                <button className="window-red window-color"> </button>
-                <button className="window-green window-color"> </button>
-                <button className="window-blue window-color"> </button>
-                <button className="window-yellow window-color"> </button>
-                <button className="window-magenta window-color"> </button>
-                <button className="window-orange window-color"> </button>
+          <div className="window__body-wrapper">
+            <div className="window__optionlist">
+              {/* color */}
+              <div className="window__option">
+                <span className="window__option-name"> Color </span>
+                <div className="window-colors">
+                  <button className="window-red window-color"> </button>
+                  <button className="window-green window-color"> </button>
+                  <button className="window-blue window-color"> </button>
+                  <button className="window-yellow window-color"> </button>
+                  <button className="window-magenta window-color"> </button>
+                  <button className="window-orange window-color"> </button>
+                </div>
+                <input type="text" value={24} />
               </div>
-              <input type="text" value={24} />
-            </div>
-            {/* speed */}
-            <div className="window__option">
-              <span className="window__option-name"> Speed </span>
-              <FontSlider />
-              <input type="text" value={24} />
-            </div>
-            {/* font size */}
-            <div className="window__option">
-              <span className="window__option-name"> Font size </span>
-              <FontSlider />
-              <input type="text" value={24} />
-            </div>
-            {/* font family */}
-            <div className="window__option">
-              <span> Font Family </span>
-              <ReactDropdown
-                options={options}
-                onChange={handleFontChange}
-                value={options[0]}
-                placeholder="Select an option"
-                className="dropdown"
-                controlClassName="dropdown-control"
-                placeholderClassName="dropdown-placeholder"
-                menuClassName="dropdown-menu"
-                arrowClosed={
-                  <span className="dropdown-arrow">
-                    <ChevronDown size={18} />{" "}
-                  </span>
-                }
-                arrowOpen={
-                  <span className="dropdown-arrow">
-                    <ChevronUp size={18} />{" "}
-                  </span>
-                }
-              />
-              <span> default </span>
-            </div>
-            {/* source */}
-            <div className="window__option">
-              <span> Source </span>
-              <div>
-                <input type="file" />
+              {/* speed */}
+              <div className="window__option">
+                <span className="window__option-name"> Speed </span>
+                <FontSlider />
+                <input type="text" value={24} />
+              </div>
+              {/* font size */}
+              <div className="window__option">
+                <span className="window__option-name"> Font size </span>
+                <FontSlider />
+                <input type="text" value={24} />
+              </div>
+              {/* font family */}
+              <div className="window__option">
+                <span> Font Family </span>
+                <ReactDropdown
+                  options={options}
+                  onChange={handleFontChange}
+                  value={options[0]}
+                  placeholder="Select an option"
+                  className="dropdown"
+                  controlClassName="dropdown-control"
+                  placeholderClassName="dropdown-placeholder"
+                  menuClassName="dropdown-menu"
+                  arrowClosed={
+                    <span className="dropdown-arrow">
+                      <Feather.ChevronDown size={18} />{" "}
+                    </span>
+                  }
+                  arrowOpen={
+                    <span className="dropdown-arrow">
+                      <Feather.ChevronUp size={18} />{" "}
+                    </span>
+                  }
+                />
+                <span> default </span>
+              </div>
+              {/* source */}
+              <div className="window__option">
+                <span> Source </span>
+                <div>
+                  <input type="file" />
+                </div>
               </div>
             </div>
           </div>
