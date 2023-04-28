@@ -68,6 +68,7 @@ export default function Home() {
     <main className="">
       <Header />
       <div className="code" ref={codeRef}>
+        
         {/* <div className="code-wrapper"> */}
         <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
         <pre className="code-pre">
@@ -105,7 +106,7 @@ const Window = () => {
   const handleFontChange = (e) => {};
 
   return (
-    <Draggable bounds="parent">
+    <Draggable bounds="parent" handle=".window__header">
       <div className="window">
         <div className="window__header">
           <h4 className="window__title"> Settings </h4>

@@ -20,6 +20,9 @@ body {
   color: var(--color);
   font-family: var(--font);
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 h1,
 h2,
@@ -43,14 +46,14 @@ button {
   width: 100%;
   height: calc(100vh - 60px);
   max-height: calc(100vh - 60px);
-
   background-color: var(--bg);
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 2rem;
+}
 
-  border: 4px solid red;
-
+.code::-webkit-scrollbar {
+  display: none
 }
 
 .code-pre {
@@ -64,7 +67,9 @@ button {
   font-family: inherit;
   font-size: 1rem;
 
-  border: 1px solid red;
+  outline: 1px solid red;
+
+  /* display: none; */
 }
 
 .code-area {
@@ -128,9 +133,9 @@ button {
 
 
 /* ========== window styling =========== */
-
 .window {
-  position: absolute;
+  position: fixed;
+  z-index: 999999;
   bottom: 100px;
   left: 300px;
   width: 500px;
@@ -139,8 +144,8 @@ button {
   display: flex;
   flex-direction: column;
 
-  padding: 0.15rem;
-  background: linear-gradient(60deg, rgb(0, 211, 141), rgb(56, 136, 255));
+  padding: 0.25rem;
+  background: rgb(26, 26, 26);
   color: rgb(75, 147, 255);
 }
 
@@ -153,6 +158,7 @@ button {
 
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: white;
+  cursor: move;
 }
 
 .window__title {
