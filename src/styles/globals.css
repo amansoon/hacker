@@ -160,12 +160,12 @@ button {
   cursor: move;
   padding: 0.25rem;
   background-color: black;
-  border: 4px solid rgb(255, 255, 255);
+  border: 5px solid rgb(255, 255, 255);
 }
 
 .window__header-wrapper {
   width: 100%;
-  height: 40px;
+  height: 36px;
   display: flex;
   gap: 0.25rem;
 }
@@ -175,13 +175,12 @@ button {
   background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 0 1rem;
 }
 
 .window__close {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,7 +191,7 @@ button {
   flex-grow: 1;
   background: rgb(0, 0, 0);
   /* background: white; */
-  border: 4px solid white;
+  border: 5px solid white;
   border-top-width: 0;
 }
 .window__body-wrapper {

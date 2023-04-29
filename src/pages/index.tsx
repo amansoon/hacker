@@ -105,7 +105,7 @@ const Window = () => {
   const handleFontChange = (e) => {};
 
   return (
-    <Draggable bounds="parent" handle=".window__header">
+    <Draggable bounds="parent" handle=".window__title">
       <div className="window">
         <div className="window__header">
           <div className="window__header-wrapper">
