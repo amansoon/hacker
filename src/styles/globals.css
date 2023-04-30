@@ -149,29 +149,3 @@ button {
 }
 
 /* ========== window styling =========== */
-.window {
-  position: fixed;
-  z-index: 999999;
-  bottom: 100px;
-  left: 300px;
-  width: 500px;
-  height: auto;
-
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  background-color: white;
-  
-  border-radius: 2px;
-  
-  color: rgb(205, 205, 205);
-}
-
-.window__header {
-  color: rgb(0, 0, 0);
-  cursor: move;
-  user-select: none;
-  border-bottom: 5px solid white;
-  color: white;
-  background-color: rgb(0, 0, 0);
-}

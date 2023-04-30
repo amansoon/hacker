@@ -9,9 +9,6 @@ import { code } from "@/data/code";
  *   font_size
  */
 
-import Draggable, { DraggableBounds } from "react-draggable";
-import Slider from "rc-slider";
-import ReactDropdown from "react-dropdown";
 import * as Feather from "react-feather";
 import Header from "@/components/Header";
 import Window from "@/components/Window";
@@ -52,17 +49,6 @@ export default function Home() {
 
   const changeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     addMoreText();
-  };
-
-  const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsText(file);
-      reader.addEventListener("load", () => {
-        setSource(reader.result as string);
-      });
-    }
   };
 
   return (

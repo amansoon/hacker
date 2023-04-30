@@ -13,6 +13,22 @@ const Window = () => {
   const [fontFamily, setFontFamily] = useState(fonts[1]);
   const [speed, setSpeed] = useState(10);
   const [source, setSource] = useState<string>("");
+  const [isFocused, setFocused] = useState(false);
+
+  useEffect(() => {
+    document.body.addEventListener("mousedown", focusHandler);
+    return () => {
+      document.body.removeEventListener("mousedown", focusHandler);
+    };
+  }, []);
+
+  const focusHandler = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest(".window")) {
+      setFocused(true);
+    } else {
+      setFocused(false);
+    }
+  };
 
   const fontFamilyHandler = (data: { value: string; label: string }) => {
     setFontFamily(data.value);
@@ -46,96 +62,92 @@ const Window = () => {
 
   return (
     <Draggable bounds="parent" handle=".window__title">
-      <div className="window">
-        <div className="window__header">
-          <div className="window__header-wrapper">
-            <div className="window__title"> Settings </div>
-            <button className="window__close">
-              {" "}
-              <Feather.X size={18} strokeWidth={2.5} strokeLinecap="butt" />{" "}
-            </button>
-          </div>
+      <div className={`window ${isFocused ? "window--focused" : ""}`}>
+        <div className={`window__header`}>
+          <div className="window__title"> Settings </div>
+          <button className="window__close">
+            {" "}
+            <Feather.X size={18} strokeWidth={2.5} strokeLinecap="butt" />{" "}
+          </button>
         </div>
         <div className="window__body">
-          <div className="window__body-wrapper">
-            <div className="window__optionlist">
-              {/* color */}
-              <div className="window__option">
-                <span className="window__option-name"> Color </span>
-                <div className="window-colors">
-                  {colors.map((clr) => {
-                    return (
-                      <button
-                        className={`window-color ${clr === color ? "window-color--selected" : ""}`}
-                        style={{ backgroundColor: clr, outlineColor: clr }}
-                        onClick={() => colorHandler(clr)}
-                      ></button>
-                    );
-                  })}
-                </div>
+          <div className="window__optionlist">
+            {/* color */}
+            <div className="window__option">
+              <span className="window__option-name"> Color </span>
+              <div className="window-colors">
+                {colors.map((clr) => {
+                  return (
+                    <button
+                      className={`window-color ${clr === color ? "window-color--selected" : ""}`}
+                      style={{ backgroundColor: clr, outlineColor: clr }}
+                      onClick={() => colorHandler(clr)}
+                    ></button>
+                  );
+                })}
               </div>
-              {/* speed */}
-              <div className="window__option">
-                <span className="window__option-name"> Speed </span>
-                <div className="window__slider">
-                  <Slider min={2} max={20} step={1} value={speed} onChange={speedHandler} />
-                </div>
-                <input
-                  className="window__option-input"
-                  type="number"
-                  value={speed}
-                  min={2}
-                  max={20}
-                  onChange={(e) => speedHandler(parseInt(e.target.value))}
-                />
+            </div>
+            {/* speed */}
+            <div className="window__option">
+              <span className="window__option-name"> Speed </span>
+              <div className="window__slider">
+                <Slider min={2} max={20} step={1} value={speed} onChange={speedHandler} />
               </div>
-              {/* font size */}
-              <div className="window__option">
-                <span className="window__option-name"> Font size </span>
-                <div className="window__slider">
-                  <Slider min={8} max={48} value={fontSize} onChange={fontSizeHandler} />
-                </div>
-                <input
-                  className="window__option-input"
-                  type="number"
-                  min={8}
-                  max={48}
-                  value={fontSize}
-                  onChange={(e) => fontSizeHandler(parseInt(e.target.value))}
-                />
+              <input
+                className="window__option-input"
+                type="number"
+                value={speed}
+                min={2}
+                max={20}
+                onChange={(e) => speedHandler(parseInt(e.target.value))}
+              />
+            </div>
+            {/* font size */}
+            <div className="window__option">
+              <span className="window__option-name"> Font size </span>
+              <div className="window__slider">
+                <Slider min={8} max={48} value={fontSize} onChange={fontSizeHandler} />
               </div>
-              {/* font family */}
-              <div className="window__option">
-                <span> Font Family </span>
-                <ReactDropdown
-                  options={fonts}
-                  onChange={fontFamilyHandler}
-                  value={fontFamily}
-                  placeholder="Select an option"
-                  className="dropdown"
-                  controlClassName="dropdown-control"
-                  placeholderClassName="dropdown-placeholder"
-                  menuClassName="dropdown-menu"
-                  arrowClosed={
-                    <span className="dropdown-arrow">
-                      <Feather.ChevronDown size={18} />{" "}
-                    </span>
-                  }
-                  arrowOpen={
-                    <span className="dropdown-arrow">
-                      <Feather.ChevronUp size={18} />{" "}
-                    </span>
-                  }
-                />
+              <input
+                className="window__option-input"
+                type="number"
+                min={8}
+                max={48}
+                value={fontSize}
+                onChange={(e) => fontSizeHandler(parseInt(e.target.value))}
+              />
+            </div>
+            {/* font family */}
+            <div className="window__option">
+              <span> Font Family </span>
+              <ReactDropdown
+                options={fonts}
+                onChange={fontFamilyHandler}
+                value={fontFamily}
+                placeholder="Select an option"
+                className="dropdown"
+                controlClassName="dropdown-control"
+                placeholderClassName="dropdown-placeholder"
+                menuClassName="dropdown-menu"
+                arrowClosed={
+                  <span className="dropdown-arrow">
+                    <Feather.ChevronDown size={18} />{" "}
+                  </span>
+                }
+                arrowOpen={
+                  <span className="dropdown-arrow">
+                    <Feather.ChevronUp size={18} />{" "}
+                  </span>
+                }
+              />
+            </div>
+            {/* source */}
+            <div className="window__option">
+              <span> Source </span>
+              <div>
+                <input type="file" className="window__upload" onChange={sourceHandler} />
               </div>
-              {/* source */}
-              <div className="window__option">
-                <span> Source </span>
-                <div>
-                  <input type="file" className="window__upload" onChange={sourceHandler} />
-                </div>
-                <div>Reset</div>
-              </div>
+              <div>Reset</div>
             </div>
           </div>
         </div>
