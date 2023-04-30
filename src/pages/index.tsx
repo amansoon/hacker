@@ -110,7 +110,7 @@ const Window = () => {
         <div className="window__header">
           <div className="window__header-wrapper">
             <div className="window__title"> Settings </div>
-            <button className="window__close"> <Feather.X size={20} strokeWidth={3} strokeLinecap="butt" /> </button>
+            <button className="window__close"> <Feather.X size={18} strokeWidth={2.5} strokeLinecap="butt" /> </button>
           </div>
         </div>
         <div className="window__body">

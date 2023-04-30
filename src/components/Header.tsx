@@ -25,7 +25,7 @@ function Header({}: Props) {
   return (
     <header className={`${css.header} ${!isHeader &&  css["header--hidden"]}`}>
       <div className={css.header__wrapper}>
-        <div className={css.logo}> Being | hacker </div>
+        <div className={css.logo}> Being | Hacker </div>
         <nav className={css.nav}>
           <div className={css.nav__item}> Explore </div>
           <div className={css.nav__item}>About</div>
