@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities; */
 
+@font-face {
+  font-family: 'Dina';
+  src: url('../assets/fonts/DinaRemasterCollection.ttc');
+}
+
 :root {
   --bg: black;
   --color: rgb(0, 206, 0);
@@ -19,6 +24,7 @@
 body {
   color: var(--color);
   /* font-family: var(--font); */
+  font-family: 'Dina';
 }
 body::-webkit-scrollbar {
   display: none;
@@ -151,21 +157,27 @@ button {
 
   display: flex;
   flex-direction: column;
-  color: rgb(75, 147, 255);
   padding: 5px;
   background-color: white;
-
+  
   border-radius: 2px;
+  
+  color: rgb(205, 205, 205);
 }
 
 .window__header {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: rgb(0, 0, 0);
   cursor: move;
-  background-color: rgb(255, 255, 255);
-  border-bottom: 5px solid white;
-  /* padding: 0 0.25rem; */
   user-select: none;
+  border-bottom: 5px solid white;
+  color: white;
+  background-color: rgb(0, 0, 0);
+}
+
+.window:hover .window__header {
+  /* font-weight: bold; */
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
 }
 
 .window__header-wrapper {
@@ -188,7 +200,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
   border-radius: 2px;
 }
 
@@ -222,6 +233,19 @@ button {
 .window__option-name {
   width: 100px;
 }
+
+.window__option-input {
+  background-color: transparent;
+  color: white;
+  height: 34px;
+  padding: 0 0.875rem;
+  outline: transparent;
+  border: 1px solid white;
+  font-family: inherit;
+}
+
+
+
 
 .window-colors {
   display: flex;
@@ -310,42 +334,51 @@ button {
 
 /* ======= react-dropdown styling =========== */
 .dropdown {
-  width: 200px;
-  /* border: 1px solid red; */
   position: relative;
+  width: 180px;
 }
 
 .dropdown-control {
+  position: relative;
+  z-index: 100;
   display: flex;
   align-items: center;
+  border: 1px solid white;
   background-color: rgba(141, 141, 141, 0.1);
-  padding: 0.25rem;
 }
 
 .dropdown-placeholder {
-  width: 180px;
-  background-color: rgba(141, 141, 141, 0.1);
-  padding: 0.5rem 0.875rem;
-  color: rgb(124, 124, 124);
+  flex-grow: 1;
+  padding: 0 0.875rem;
+  height: 34px;
+  display: flex;
+  align-items: center;
 
+  color: rgb(124, 124, 124);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .dropdown-arrow {
-  padding: 0.5rem;
+  display: flex;
+  margin-right: 0.65rem;
+  background-color: rgb(16, 16, 16);
 }
 
 .dropdown-menu {
   width: 100%;
   position: absolute;
-  /* top: 10px; */
   background-color: rgb(15, 15, 15);
-  border-top-width: 0;
+  border: 1px solid rgb(255, 255, 255);
+  border-top: 0;
 }
 
 .dropdown-menu .Dropdown-option {
-  padding: 0.5rem 0.875rem;
+  padding: 0 0.875rem;
+  height: 34px;
+  display: flex;
+  align-items: center;
+
   cursor: default;
   white-space: nowrap;
   overflow: hidden;
@@ -353,7 +386,8 @@ button {
 }
 
 .dropdown-menu .Dropdown-option:hover {
-  background-color: rgb(33, 33, 136);
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(0, 0, 0);
 }
 
 .dropdown-menu .Dropdown-option.is-selected {
@@ -361,19 +395,23 @@ button {
 }
 
 /* file input upload  */
-
-input {
+input.window__upload {
+  /* padding: 0.125rem; */
   font-family: inherit;
   background: rgb(16, 16, 16);
-  padding: 0.25rem;
+  border: 1px solid white;
 }
 
-input::file-selector-button {
-  padding: 0.5rem 0.75rem;
+input.window__upload::file-selector-button {
+  padding: 0.5rem 0.875rem;
+  height: 34px;
+
   font-family: inherit;
-  margin-right: 0.875rem;
-  background: rgb(22, 22, 22);
+  font-size: 1rem;
+  color: rgb(57, 57, 57);
+  background: rgb(255, 255, 255);
+
+  margin-right: 0.75rem;
   outline: 0;
   border: 0;
-  color: rgb(135, 135, 135);
 }

@@ -127,19 +127,19 @@ const Window = () => {
                   <button className="window-magenta window-color"> </button>
                   <button className="window-orange window-color"> </button>
                 </div>
-                <input type="text" value={24} />
+                <input className="window__option-input" type="text" value={24} />
               </div>
               {/* speed */}
               <div className="window__option">
                 <span className="window__option-name"> Speed </span>
                 <FontSlider />
-                <input type="text" value={24} />
+                <input className="window__option-input" type="text" value={24} />
               </div>
               {/* font size */}
               <div className="window__option">
                 <span className="window__option-name"> Font size </span>
                 <FontSlider />
-                <input type="text" value={24} />
+                <input className="window__option-input" type="text" value={24} />
               </div>
               {/* font family */}
               <div className="window__option">
@@ -170,7 +170,10 @@ const Window = () => {
               <div className="window__option">
                 <span> Source </span>
                 <div>
-                  <input type="file" />
+                  <input type="file" className="window__upload" />
+                </div>
+                <div>
+                  Reset
                 </div>
               </div>
             </div>
