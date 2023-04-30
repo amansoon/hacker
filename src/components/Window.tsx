@@ -31,22 +31,26 @@ const Window = () => {
   };
 
   const fontFamilyHandler = (data: { value: string; label: string }) => {
+    localStorage.setItem("fontFamily", data.value);
     dispatch({ type: ActionKind.SET_TYPER, payload: { fontFamily: data.value } });
   };
 
   const fontSizeHandler = (value: number | number[]) => {
     if (!Array.isArray(value)) {
+      localStorage.setItem("fontSize", value.toString());
       dispatch({ type: ActionKind.SET_TYPER, payload: { fontSize: value } });
     }
   };
 
   const speedHandler = (value: number | number[]) => {
     if (!Array.isArray(value)) {
+      localStorage.setItem("speed", value.toString());
       dispatch({ type: ActionKind.SET_TYPER, payload: { speed: value } });
     }
   };
 
   const colorHandler = (value: string) => {
+    localStorage.setItem("color", value);
     dispatch({ type: ActionKind.SET_TYPER, payload: { color: value } });
   };
 
@@ -55,6 +59,7 @@ const Window = () => {
       const reader = new FileReader();
       reader.readAsText(e.target.files[0]);
       reader.onload = () => {
+        localStorage.setItem("source", reader.result as string);
         dispatch({ type: ActionKind.SET_TYPER, payload: { source: reader.result } });
       };
     }
@@ -106,13 +111,13 @@ const Window = () => {
             <div className="window__option">
               <span className="window__option-name"> Font size </span>
               <div className="window__slider">
-                <Slider min={8} max={48} value={fontSize} onChange={fontSizeHandler} />
+                <Slider min={8} max={36} value={fontSize} onChange={fontSizeHandler} />
               </div>
               <input
                 className="window__option-input"
                 type="number"
                 min={8}
-                max={48}
+                max={36}
                 value={fontSize}
                 onChange={(e) => fontSizeHandler(parseInt(e.target.value))}
               />

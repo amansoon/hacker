@@ -86,7 +86,6 @@ button {
   font-size: 1rem;
 
   outline: 1px solid red;
-
   /* display: none; */
 }
 
@@ -117,7 +116,7 @@ button {
     color: transparent;
   }
   50% {
-    color: var(--color);
+    color: inherit;
   }
 }
 
@@ -127,7 +126,7 @@ button {
     color: transparent;
   }
   50% {
-    color: var(--color);
+    color: inherit;
   }
 }
 

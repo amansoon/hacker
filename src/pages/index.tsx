@@ -16,7 +16,7 @@ import { useAppContext } from "@/context/context";
 
 export default function Home() {
   const { state } = useAppContext();
-  const { speed, source } = state;
+  const { speed, fontSize, color, source } = state;
 
   const [text, setText] = useState("");
   const [cursor, setCursor] = useState(0);
@@ -55,7 +55,7 @@ export default function Home() {
       <div className="code" ref={codeRef}>
         {/* <div className="code-wrapper"> */}
         <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
-        <pre className="code-pre">
+        <pre className="code-pre" style={{ fontSize: fontSize, color: color }}>
           <span>{text}</span>
           <span className="code-cursor">|</span>
         </pre>
