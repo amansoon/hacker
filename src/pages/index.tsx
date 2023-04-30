@@ -14,6 +14,7 @@ import Slider from "rc-slider";
 import ReactDropdown from "react-dropdown";
 import * as Feather from "react-feather";
 import Header from "@/components/Header";
+import Window from "@/components/Window";
 
 export default function Home() {
   const [speed, setSpeed] = useState(10);
@@ -90,96 +91,3 @@ export default function Home() {
     </main>
   );
 }
-
-const FontSlider = () => {
-  return (
-    <div className="window__slider">
-      <Slider min={8} max={50} step={1} />
-    </div>
-  );
-};
-
-const Window = () => {
-  const options = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
-
-  const handleFontChange = (e) => {};
-
-  return (
-    <Draggable bounds="parent" handle=".window__title">
-      <div className="window">
-        <div className="window__header">
-          <div className="window__header-wrapper">
-            <div className="window__title"> Settings </div>
-            <button className="window__close"> <Feather.X size={18} strokeWidth={2.5} strokeLinecap="butt" /> </button>
-          </div>
-        </div>
-        <div className="window__body">
-          <div className="window__body-wrapper">
-            <div className="window__optionlist">
-              {/* color */}
-              <div className="window__option">
-                <span className="window__option-name"> Color </span>
-                <div className="window-colors">
-                  <button className="window-red window-color"> </button>
-                  <button className="window-green window-color"> </button>
-                  <button className="window-blue window-color"> </button>
-                  <button className="window-yellow window-color"> </button>
-                  <button className="window-magenta window-color"> </button>
-                  <button className="window-orange window-color"> </button>
-                </div>
-                <input className="window__option-input" type="text" value={24} />
-              </div>
-              {/* speed */}
-              <div className="window__option">
-                <span className="window__option-name"> Speed </span>
-                <FontSlider />
-                <input className="window__option-input" type="text" value={24} />
-              </div>
-              {/* font size */}
-              <div className="window__option">
-                <span className="window__option-name"> Font size </span>
-                <FontSlider />
-                <input className="window__option-input" type="text" value={24} />
-              </div>
-              {/* font family */}
-              <div className="window__option">
-                <span> Font Family </span>
-                <ReactDropdown
-                  options={options}
-                  onChange={handleFontChange}
-                  value={options[0]}
-                  placeholder="Select an option"
-                  className="dropdown"
-                  controlClassName="dropdown-control"
-                  placeholderClassName="dropdown-placeholder"
-                  menuClassName="dropdown-menu"
-                  arrowClosed={
-                    <span className="dropdown-arrow">
-                      <Feather.ChevronDown size={18} />{" "}
-                    </span>
-                  }
-                  arrowOpen={
-                    <span className="dropdown-arrow">
-                      <Feather.ChevronUp size={18} />{" "}
-                    </span>
-                  }
-                />
-                <span> default </span>
-              </div>
-              {/* source */}
-              <div className="window__option">
-                <span> Source </span>
-                <div>
-                  <input type="file" className="window__upload" />
-                </div>
-                <div>
-                  Reset
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Draggable>
-  );
-};
