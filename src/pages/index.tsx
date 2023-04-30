@@ -12,13 +12,11 @@ import { code } from "@/data/code";
 import * as Feather from "react-feather";
 import Header from "@/components/Header";
 import Window from "@/components/Window";
+import { useAppContext } from "@/context/context";
 
 export default function Home() {
-  const [speed, setSpeed] = useState(10);
-  const [color, setColor] = useState("");
-  const [font, setFont] = useState("");
-  const [fontSize, setFontSize] = useState("");
-  const [source, setSource] = useState(code);
+  const { state } = useAppContext();
+  const { speed, source } = state;
 
   const [text, setText] = useState("");
   const [cursor, setCursor] = useState(0);

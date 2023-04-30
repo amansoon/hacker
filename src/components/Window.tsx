@@ -3,17 +3,17 @@ import Draggable from "react-draggable";
 import * as Feather from "react-feather";
 import ReactDropdown from "react-dropdown";
 import Slider from "rc-slider";
+import { useAppContext } from "@/context/context";
+import { ActionKind } from "@/context/types";
 
 const fonts = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
 const colors = ["red", "blue", "orange", "yellow", "white"];
 
 const Window = () => {
-  const [color, setColor] = useState("green");
-  const [fontSize, setFontSize] = useState(20);
-  const [fontFamily, setFontFamily] = useState(fonts[1]);
-  const [speed, setSpeed] = useState(10);
-  const [source, setSource] = useState<string>("");
   const [isFocused, setFocused] = useState(false);
+
+  const { state, dispatch } = useAppContext();
+  const { color, fontSize, fontFamily, speed, source } = state;
 
   useEffect(() => {
     document.body.addEventListener("mousedown", focusHandler);
@@ -31,23 +31,23 @@ const Window = () => {
   };
 
   const fontFamilyHandler = (data: { value: string; label: string }) => {
-    setFontFamily(data.value);
+    dispatch({ type: ActionKind.SET_TYPER, payload: { fontFamily: data.value } });
   };
 
   const fontSizeHandler = (value: number | number[]) => {
     if (!Array.isArray(value)) {
-      setFontSize(value);
+      dispatch({ type: ActionKind.SET_TYPER, payload: { fontSize: value } });
     }
   };
 
   const speedHandler = (value: number | number[]) => {
     if (!Array.isArray(value)) {
-      setSpeed(value);
+      dispatch({ type: ActionKind.SET_TYPER, payload: { speed: value } });
     }
   };
 
   const colorHandler = (value: string) => {
-    setColor(value);
+    dispatch({ type: ActionKind.SET_TYPER, payload: { color: value } });
   };
 
   const sourceHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +55,7 @@ const Window = () => {
       const reader = new FileReader();
       reader.readAsText(e.target.files[0]);
       reader.onload = () => {
-        setSource(reader.result as string);
+        dispatch({ type: ActionKind.SET_TYPER, payload: { source: reader.result } });
       };
     }
   };
