@@ -12,6 +12,7 @@ export default function useClickOutside(ref: RefType, callback: CallbackType, wh
   });
 
   const handler = (e: MouseEvent) => {
+    console.log(ref)
     if (ref.current && !ref.current.contains(e.target as HTMLElement)) {
       savedCallback.current();
     }

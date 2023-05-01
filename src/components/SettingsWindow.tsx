@@ -8,6 +8,10 @@ import Slider from "rc-slider";
 import useClickOutside from "@/hooks/onclickoutside";
 import { ReactDropdownProps } from "react-dropdown";
 
+/* eslint-disable no-console */
+import Dropdown from 'rc-dropdown';
+import 'rc-dropdown/assets/index.css';
+
 const fonts = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
 const colors = ["red", "blue", "orange", "yellow", "white"];
 
@@ -26,7 +30,7 @@ function SettingsWindow({}: Props) {
   const { state, dispatch } = useAppContext();
   const { speed, color, fontSize, fontFamily, isTyperSettings } = state;
   const windowName = "settings";
-  const dropdownRef = useRef<HTMLDivElement>();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.addEventListener("mousedown", focusHandler);
@@ -91,13 +95,18 @@ function SettingsWindow({}: Props) {
   };
 
 
-  useClickOutside(dropdownRef, () => {
-       alert("Clicked outside")
-  }, [])
+  // useClickOutside(dropdownRef, () => {
+  //      alert("Clicked outside")
+  // }, [])
+
+
+  const handleDropdownClick = () => {
+    console.log("dropdown-document-click")
+  }
 
   return (
     <WindowLayout title="Settings" isShow={isTyperSettings} close={close} isFocused={isFocused} windowName={windowName}>
-      <div className="window__optionlist" ref={dropdownRef}>
+      <div className="window__optionlist">
         {/* color */}
         <div className="window__option">
           <span className="window__option-name"> Color </span>
