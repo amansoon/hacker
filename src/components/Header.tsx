@@ -23,9 +23,9 @@ function Header({}: Props) {
   // }, [screenfull])
 
   return (
-    <header className={`${css.header} ${!isHeader &&  css["header--hidden"]}`}>
+    <header className={`${css.header} ${!isHeader && css["header--hidden"]}`}>
       <div className={css.header__wrapper}>
-        <div className={css.logo}> Being | Hacker </div>
+        <div className={css.logo}> BEING | HACKER </div>
         <nav className={css.nav}>
           <div className={css.nav__item}> Explore </div>
           <div className={css.nav__item}>About</div>
@@ -33,14 +33,12 @@ function Header({}: Props) {
           <div className={css.nav__item}> Help </div>
         </nav>
         <div className={css.actions}>
-          <button className={css.action} onClick={() => setHeader(false)}>
-            {/* <Minus /> */}
-            <X />
-          </button>
           <button className={css.action} onClick={() => toggleFullscreen()}>
-            {isFullscreen ? <Minimize /> : <Maximize />}
+            {isFullscreen ? <Minimize strokeLinecap="butt" /> : <Maximize strokeLinecap="butt" />}
           </button>
-          {/* <button> <Maximize /> </button> */}
+          <button className={css.action} onClick={() => setHeader(false)}>
+            <X strokeLinecap="butt" />
+          </button>
         </div>
       </div>
     </header>

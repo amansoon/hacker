@@ -13,10 +13,11 @@ import * as Feather from "react-feather";
 import Header from "@/components/Header";
 import Window from "@/components/Window";
 import { useAppContext } from "@/context/context";
+import { ActionKind } from "@/context/types";
 
 export default function Home() {
-  const { state } = useAppContext();
-  const { speed, fontSize, color, source } = state;
+  const { state, dispatch } = useAppContext();
+  const { fontFamily, speed, fontSize, color, source, isTyperSettings } = state;
 
   const [text, setText] = useState("");
   const [cursor, setCursor] = useState(0);
@@ -41,7 +42,8 @@ export default function Home() {
 
   useEffect(() => {
     if (codeRef.current) {
-      codeRef.current.scrollTo(0, codeRef.current.scrollHeight);
+      codeRef.current.scrollTop = codeRef.current.scrollHeight;
+      console.log(codeRef.current.scrollHeight);
     }
   }, [text]);
 
@@ -49,13 +51,18 @@ export default function Home() {
     addMoreText();
   };
 
+  const windowHandler = () => {
+    dispatch({ type: ActionKind.SET_TYPER, payload: { isTyperSettings: !isTyperSettings } });
+  };
+
   return (
     <main className="">
       <Header />
       <div className="code" ref={codeRef}>
-        {/* <div className="code-wrapper"> */}
+        
         <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
-        <pre className="code-pre" style={{ fontSize: fontSize, color: color }}>
+        {/* <div className="code-wrapper"> */}
+        <pre className="code-pre" style={{ fontFamily, fontSize: fontSize, color: color }}>
           <span>{text}</span>
           <span className="code-cursor">|</span>
         </pre>
@@ -65,7 +72,7 @@ export default function Home() {
           <button>
             <Feather.X />
           </button>
-          <button>
+          <button onClick={() => windowHandler()}>
             <Feather.Settings />
           </button>
         </div>

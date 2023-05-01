@@ -1,8 +1,8 @@
 .window {
   position: fixed;
   z-index: 999999;
-  bottom: 100px;
-  left: 300px;
+  bottom: 25vh;
+  right: 300px;
   width: 500px;
   height: auto;
 
@@ -12,6 +12,12 @@
   background-color: white;
   border-radius: 2px;
   color: rgb(205, 205, 205);
+
+  visibility: visible;
+}
+
+.window--hidden {
+  visibility: hidden !important;
 }
 
 .window__header {
@@ -32,6 +38,7 @@
 
 .window__title {
   flex-grow: 1;
+  height: 36px;
   display: flex;
   align-items: center;
   padding: 0 1rem;
@@ -86,6 +93,7 @@
   border: 1px solid rgb(32, 32, 32);
   font-size: 1rem;
   font-family: inherit;
+  margin-left: 20px;
 }
 
 .window-colors {

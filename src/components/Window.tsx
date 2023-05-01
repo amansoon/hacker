@@ -13,7 +13,7 @@ const Window = () => {
   const [isFocused, setFocused] = useState(false);
 
   const { state, dispatch } = useAppContext();
-  const { color, fontSize, fontFamily, speed, source } = state;
+  const { color, fontSize, fontFamily, speed, source, isTyperSettings } = state;
 
   useEffect(() => {
     document.body.addEventListener("mousedown", focusHandler);
@@ -65,14 +65,17 @@ const Window = () => {
     }
   };
 
+  const closeWindow = () => {
+    dispatch({ type: ActionKind.SET_TYPER, payload: { isTyperSettings: false } });
+  };
+
   return (
     <Draggable bounds="parent" handle=".window__title">
-      <div className={`window ${isFocused ? "window--focused" : ""}`}>
+      <div className={`window ${isFocused ? "window--focused" : ""} ${!isTyperSettings ? "window--hidden" : ""}`}>
         <div className={`window__header`}>
           <div className="window__title"> Settings </div>
-          <button className="window__close">
-            {" "}
-            <Feather.X size={18} strokeWidth={2.5} strokeLinecap="butt" />{" "}
+          <button className="window__close" onClick={() => closeWindow()}>
+            <Feather.X size={18} strokeWidth={2.5} strokeLinecap="butt" />
           </button>
         </div>
         <div className="window__body">
@@ -96,13 +99,13 @@ const Window = () => {
             <div className="window__option">
               <span className="window__option-name"> Speed </span>
               <div className="window__slider">
-                <Slider min={2} max={20} step={1} value={speed} onChange={speedHandler} />
+                <Slider min={1} max={20} step={1} value={speed} onChange={speedHandler} />
               </div>
               <input
                 className="window__option-input"
                 type="number"
                 value={speed}
-                min={2}
+                min={1}
                 max={20}
                 onChange={(e) => speedHandler(parseInt(e.target.value))}
               />
@@ -116,7 +119,7 @@ const Window = () => {
               <input
                 className="window__option-input"
                 type="number"
-                min={8}
+                min={10}
                 max={36}
                 value={fontSize}
                 onChange={(e) => fontSizeHandler(parseInt(e.target.value))}

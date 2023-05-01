@@ -9,6 +9,10 @@ const initialState: State = {
   fontSize: 16,
   speed: 5,
   source: code,
+
+  isTyperSettings: false,
+  isAbout: false,
+  isHelp: false,
 };
 
 const context = createContext<ContextType>({ state: initialState } as ContextType);
@@ -24,7 +28,7 @@ export default function AppProvider({ children }: props) {
     const fontFamily = localStorage.getItem("fontFamily") || "Fira Code";
     const color = localStorage.getItem("color") || "green";
     const source = localStorage.getItem("source") || code;
-    const speed = localStorage.getItem("speed") ? parseInt(localStorage.getItem("speed") as string) : 5;
+    const speed = localStorage.getItem("speed") ? parseInt(localStorage.getItem("speed") as string) : 4;
     const fontSize = localStorage.getItem("fontSize") ? parseInt(localStorage.getItem("fontSize") as string) : 16;
     if (speed && color && fontSize && fontFamily && source) {
       dispatch({ type: ActionKind.SET_TYPER, payload: { speed, color, fontSize, fontFamily, source } });
