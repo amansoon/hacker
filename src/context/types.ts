@@ -7,6 +7,7 @@ export type State = {
   speed: number;
   source: string;
 
+  maxZI: number,
   isTyperSettings: boolean;
   isAbout: boolean;
   isHelpWindow: boolean;

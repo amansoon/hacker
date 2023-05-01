@@ -10,6 +10,7 @@ const initialState: State = {
   speed: 5,
   source: code,
 
+  maxZI: 1000,
   isTyperSettings: false,
   isHelpWindow: true,
   isAbout: false,

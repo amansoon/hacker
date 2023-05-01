@@ -26,6 +26,12 @@ function HelpWindow({}: Props) {
     }
   };
 
+  useEffect(() => {
+    if (isHelpWindow) {
+      setFocused(true);
+    }
+  }, [isHelpWindow]);
+
   const close = () => {
     console.log("Close");
     dispatch({ type: ActionKind.SET_TYPER, payload: { isHelpWindow: false } });

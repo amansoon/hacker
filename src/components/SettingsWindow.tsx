@@ -1,21 +1,32 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, ReactComponentElement, ReactElement, RefObject, useEffect, useRef, useState } from "react";
 import WindowLayout from "./WindowLayout";
 import { useAppContext } from "@/context/context";
 import { ActionKind } from "@/context/types";
 import * as Feather from "react-feather";
 import ReactDropdown from "react-dropdown";
 import Slider from "rc-slider";
+import useClickOutside from "@/hooks/onclickoutside";
+import { ReactDropdownProps } from "react-dropdown";
 
 const fonts = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
 const colors = ["red", "blue", "orange", "yellow", "white"];
 
 type Props = {};
 
+
+type DropdownRef = {
+  props: ReactDropdownProps,
+  ref: RefObject<HTMLElement>
+}
+
+
+
 function SettingsWindow({}: Props) {
   const [isFocused, setFocused] = useState(true);
   const { state, dispatch } = useAppContext();
   const { speed, color, fontSize, fontFamily, isTyperSettings } = state;
   const windowName = "settings";
+  const dropdownRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
     document.body.addEventListener("mousedown", focusHandler);
@@ -32,8 +43,13 @@ function SettingsWindow({}: Props) {
     }
   };
 
+  useEffect(() => {
+    if (isTyperSettings) {
+      setFocused(true);
+    }
+  }, [isTyperSettings]);
+
   const close = () => {
-    console.log("Close");
     dispatch({ type: ActionKind.SET_TYPER, payload: { isTyperSettings: false } });
   };
 
@@ -74,9 +90,14 @@ function SettingsWindow({}: Props) {
     }
   };
 
+
+  useClickOutside(dropdownRef, () => {
+       alert("Clicked outside")
+  }, [])
+
   return (
     <WindowLayout title="Settings" isShow={isTyperSettings} close={close} isFocused={isFocused} windowName={windowName}>
-      <div className="window__optionlist">
+      <div className="window__optionlist" ref={dropdownRef}>
         {/* color */}
         <div className="window__option">
           <span className="window__option-name"> Color </span>
