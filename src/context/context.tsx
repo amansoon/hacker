@@ -13,7 +13,7 @@ const initialState: State = {
   maxZI: 1000,
   isTyperSettings: false,
   isHelpWindow: true,
-  isAbout: false,
+  isAboutWindow: false,
 };
 
 const context = createContext<ContextType>({ state: initialState } as ContextType);

@@ -41,6 +41,15 @@ h6 {
   font-weight: normal;
 }
 
+p {
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+kbd {
+  color: rgb(0, 241, 217);
+}
+
 button {
   border: 0;
   outline: 0;

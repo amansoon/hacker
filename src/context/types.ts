@@ -9,7 +9,7 @@ export type State = {
 
   maxZI: number,
   isTyperSettings: boolean;
-  isAbout: boolean;
+  isAboutWindow: boolean;
   isHelpWindow: boolean;
 };
 

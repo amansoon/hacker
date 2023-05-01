@@ -16,6 +16,7 @@ import { useAppContext } from "@/context/context";
 import { ActionKind } from "@/context/types";
 import HelpWindow from "@/components/HelpWindow";
 import SettingsWindow from "@/components/SettingsWindow";
+import AboutWindow from "@/components/AboutWindow";
 
 export default function Home() {
   const { state, dispatch } = useAppContext();
@@ -81,6 +82,7 @@ export default function Home() {
       {/* <Window /> */}
       <SettingsWindow />
       <HelpWindow />
+      <AboutWindow />
     </main>
   );
 }

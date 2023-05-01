@@ -13,7 +13,7 @@ function Header({}: Props) {
   const [isFullscreen, setFullscreen] = useState(false);
   const [isHeader, setHeader] = useState(true);
   const { dispatch, state } = useAppContext();
-  const { isHelpWindow } = state;
+  const { isHelpWindow, isAboutWindow } = state;
 
   const toggleFullscreen = async () => {
     if (screenfull.isEnabled) {
@@ -34,7 +34,15 @@ function Header({}: Props) {
           <span> Start </span>
         </button>
         <nav className={css.nav}>
-          <div className={css.nav__item}> About</div>
+          <div
+            className={css.nav__item}
+            onClick={() => {
+              dispatch({ type: ActionKind.SET_TYPER, payload: { isAboutWindow: !isAboutWindow } });
+            }}
+          >
+            {" "}
+            About
+          </div>
           <div className={css.nav__item}> Follow Me </div>
           <div
             className={css.nav__item}
