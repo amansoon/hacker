@@ -59,7 +59,6 @@ export default function Home() {
     <main className="">
       <Header />
       <div className="code" ref={codeRef}>
-        
         <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
         {/* <div className="code-wrapper"> */}
         <pre className="code-pre" style={{ fontFamily, fontSize: fontSize, color: color }}>
@@ -70,10 +69,10 @@ export default function Home() {
         {/* sidebar */}
         <div className="code-setting">
           <button>
-            <Feather.X />
+            <Feather.X size={20} />
           </button>
           <button onClick={() => windowHandler()}>
-            <Feather.Settings />
+            <Feather.Settings size={20} />
           </button>
         </div>
         {/* </div> */}
