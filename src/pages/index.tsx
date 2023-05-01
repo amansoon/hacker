@@ -14,6 +14,8 @@ import Header from "@/components/Header";
 import Window from "@/components/Window";
 import { useAppContext } from "@/context/context";
 import { ActionKind } from "@/context/types";
+import HelpWindow from "@/components/HelpWindow";
+import SettingsWindow from "@/components/SettingsWindow";
 
 export default function Home() {
   const { state, dispatch } = useAppContext();
@@ -65,7 +67,6 @@ export default function Home() {
           <span>{text}</span>
           <span className="code-cursor">|</span>
         </pre>
-
         {/* sidebar */}
         <div className="code-setting">
           <button>
@@ -77,7 +78,9 @@ export default function Home() {
         </div>
         {/* </div> */}
       </div>
-      <Window />
+      {/* <Window /> */}
+      <SettingsWindow />
+      <HelpWindow />
     </main>
   );
 }

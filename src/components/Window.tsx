@@ -11,7 +11,6 @@ const colors = ["red", "blue", "orange", "yellow", "white"];
 
 const Window = () => {
   const [isFocused, setFocused] = useState(false);
-
   const { state, dispatch } = useAppContext();
   const { color, fontSize, fontFamily, speed, source, isTyperSettings } = state;
 

@@ -9,7 +9,7 @@ export type State = {
 
   isTyperSettings: boolean;
   isAbout: boolean;
-  isHelp: boolean;
+  isHelpWindow: boolean;
 };
 
 export type ContextType = {

@@ -11,8 +11,8 @@ const initialState: State = {
   source: code,
 
   isTyperSettings: false,
+  isHelpWindow: true,
   isAbout: false,
-  isHelp: false,
 };
 
 const context = createContext<ContextType>({ state: initialState } as ContextType);
