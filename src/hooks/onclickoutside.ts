@@ -25,5 +25,5 @@ export default function useClickOutside(ref: RefType, callback: CallbackType, wh
         document.removeEventListener("click", handler);
       };
     }
-  }, when);
+  }, [when]);
 }

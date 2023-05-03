@@ -85,14 +85,6 @@ function SettingsWindow({}: Props) {
     dispatch({ type: ActionKind.SET_TYPER, payload: { source: code } });
   };
 
-  // useClickOutside(dropdownRef, () => {
-  //      alert("Clicked outside")
-  // }, [])
-
-  const handleDropdownClick = () => {
-    console.log("dropdown-document-click");
-  };
-
   return (
     <WindowLayout title="Settings" isShow={isTyperSettings} close={close} isFocused={isFocused} windowName={windowName}>
       <div className="window__optionlist">

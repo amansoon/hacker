@@ -18,13 +18,13 @@ function AboutWindow({}: Props) {
     };
   }, []);
 
-  const focusHandler = (e: React.MouseEvent) => {
+  function focusHandler(e: MouseEvent) {
     if ((e.target as HTMLElement).closest(`.window--${windowName}`)) {
       setFocused(true);
     } else {
       setFocused(false);
     }
-  };
+  }
 
   useEffect(() => {
     if (isAboutWindow) {
