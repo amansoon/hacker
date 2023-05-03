@@ -1999,4 +1999,4 @@ export const fonts = [
   },
 ];
 
-export const colors = ["red", "#0800ff", "orange", "yellow", "white"];
+export const colors = ["red", "#0800ff", "#14c700", "orange", "yellow", "white"];
