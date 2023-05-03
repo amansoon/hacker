@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import css from "./header.module.css";
-import Link from "next/link";
-import { Grid, Maximize, Menu, Minimize, Minus, X } from "react-feather";
-// import fscreen from "fscreen";
+import { Grid, Maximize, Minimize, X } from "react-feather";
 import screenfull from "screenfull";
 import { useAppContext } from "@/context/context";
 import { ActionKind } from "@/context/types";
