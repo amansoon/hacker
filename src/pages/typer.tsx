@@ -15,6 +15,7 @@ import { ActionKind } from "@/context/types";
 import HelpWindow from "@/components/HelpWindow";
 import SettingsWindow from "@/components/SettingsWindow";
 import AboutWindow from "@/components/AboutWindow";
+import Head from "next/head";
 
 export default function Typer() {
   const { state, dispatch } = useAppContext();
@@ -65,36 +66,41 @@ export default function Typer() {
   };
 
   return (
-    <main className="">
-      <Header />
-      <div className="code" ref={codeRef}>
-        <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
-        {/* <div className="code-wrapper"> */}
-        <pre className="code-pre" style={{ fontFamily, fontSize: fontSize, color: color }}>
-          <span>{text}</span>
-          <span className="code-cursor">|</span>
-        </pre>
-      </div>
-
-      {/* setting */}
-      {isMenu && (
-        <div className="typer-menu">
-          <button className="typer-menu__item" onClick={() => setMenu(false)}>
-            <Feather.X size={20} strokeWidth={1.5} />
-          </button>
-          <button className="typer-menu__item" onClick={() => toggleHelp()}>
-            <Feather.Info size={20} strokeWidth={1.5} />
-          </button>
-          <button className="typer-menu__item" onClick={() => toggleSettings()}>
-            <Feather.Settings size={20} strokeWidth={1.5} />
-          </button>
+    <>
+      <Head>
+        <title> Being Hacker - Typer </title>
+      </Head>
+      <main className="">
+        <Header />
+        <div className="code" ref={codeRef}>
+          <textarea className="code-area" ref={textAreaRef} onChange={changeHandler}></textarea>
+          {/* <div className="code-wrapper"> */}
+          <pre className="code-pre" style={{ fontFamily, fontSize: fontSize, color: color }}>
+            <span>{text}</span>
+            <span className="code-cursor">|</span>
+          </pre>
         </div>
-      )}
-      {/* </div> */}
-      {/* <Window /> */}
-      <SettingsWindow />
-      <HelpWindow />
-      <AboutWindow />
-    </main>
+
+        {/* setting */}
+        {isMenu && (
+          <div className="typer-menu">
+            <button className="typer-menu__item" onClick={() => setMenu(false)}>
+              <Feather.X size={20} strokeWidth={1.5} />
+            </button>
+            <button className="typer-menu__item" onClick={() => toggleHelp()}>
+              <Feather.Info size={20} strokeWidth={1.5} />
+            </button>
+            <button className="typer-menu__item" onClick={() => toggleSettings()}>
+              <Feather.Settings size={20} strokeWidth={1.5} />
+            </button>
+          </div>
+        )}
+        {/* </div> */}
+        {/* <Window /> */}
+        <SettingsWindow />
+        <HelpWindow />
+        <AboutWindow />
+      </main>
+    </>
   );
 }

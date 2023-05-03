@@ -43,13 +43,10 @@ function HelpWindow({}: Props) {
         To begin, start typing on your keyboard and your hacker code will immediately appear! You can also enter full
         screen in your browser.
       </p>
+      <p>Configs like typing speed, color, font size etc. can be modified in the Settings menu.</p>
       <p>
-        To enhance your experience, press <kbd> Shift </kbd> or <kbd> Alt </kbd> (or <kbd> Option </kbd> for Mac) three
-        times. Press <kbd> Esc </kbd> to close any dialogs.
-      </p>
-      <p>Configs can be modified in the Settings menu.</p>
-      <p>
-        The menu bar can be dismissed with the x in the bottom right corner. Refresh the page to bring it back again.
+        Top right floating menu can be dismissed with the x in the top right corner. Refresh the page to bring it back
+        again.
       </p>
     </WindowLayout>
   );
