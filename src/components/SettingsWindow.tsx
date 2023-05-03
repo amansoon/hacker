@@ -100,12 +100,13 @@ function SettingsWindow({}: Props) {
         <div className="window__option">
           <span className="window__option-name"> Color </span>
           <div className="window-colors">
-            {colors.map((clr) => {
+            {colors.map((clr, index) => {
               return (
                 <button
                   className={`window-color ${clr === color ? "window-color--selected" : ""}`}
                   style={{ backgroundColor: clr, outlineColor: clr }}
                   onClick={() => colorHandler(clr)}
+                  key={index}
                 ></button>
               );
             })}
