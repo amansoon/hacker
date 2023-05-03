@@ -6,8 +6,6 @@ import * as Feather from "react-feather";
 import ReactDropdown, {Option} from "react-dropdown";
 import Slider from "rc-slider";
 
-/* eslint-disable no-console */
-import "rc-dropdown/assets/index.css";
 import { code, fonts, colors } from "@/assets/data/typer";
 
 type Props = {};
