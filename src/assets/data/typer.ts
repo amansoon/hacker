@@ -1,3 +1,4 @@
+export const code: string = `
 // SPDX-License-Identifier: GPL-2.0
 /*
  * drivers/base/power/runtime.c - Helper functions for device runtime PM
@@ -1952,3 +1953,34 @@ out:
 	return ret;
 }
 EXPORT_SYMBOL_GPL(pm_runtime_force_resume);
+`;
+
+// export const fonts = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
+export const fonts = [
+  {
+    label: "Fira Code",
+    value: "fira code",
+  },
+  {
+    label: "Menorape",
+    value: "Menorope",
+  },
+  {
+    label: "Roboto",
+    value: "Roboto",
+  },
+  {
+    label: "Cascadia Mono",
+    value: "Cascadia Mono",
+  },
+  {
+    label: "Sans Serif",
+    value: "Sans Serif",
+  },
+  {
+    label: "Space Mono",
+    value: "Space Mono",
+  },
+];
+
+export const colors = ["red", "#0800ff", "orange", "yellow", "white"];

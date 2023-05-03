@@ -1,34 +1,22 @@
-import React, { ChangeEvent, ReactComponentElement, ReactElement, RefObject, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import WindowLayout from "./WindowLayout";
 import { useAppContext } from "@/context/context";
 import { ActionKind } from "@/context/types";
 import * as Feather from "react-feather";
 import ReactDropdown from "react-dropdown";
 import Slider from "rc-slider";
-import useClickOutside from "@/hooks/onclickoutside";
-import { ReactDropdownProps } from "react-dropdown";
 
 /* eslint-disable no-console */
-import Dropdown from "rc-dropdown";
 import "rc-dropdown/assets/index.css";
-import { code } from "@/data/code";
-
-const fonts = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
-const colors = ["red", "blue", "orange", "yellow", "white"];
+import { code, fonts, colors } from "@/assets/data/typer";
 
 type Props = {};
-
-type DropdownRef = {
-  props: ReactDropdownProps;
-  ref: RefObject<HTMLElement>;
-};
 
 function SettingsWindow({}: Props) {
   const [isFocused, setFocused] = useState(true);
   const { state, dispatch } = useAppContext();
   const { speed, color, fontSize, fontFamily, isTyperSettings } = state;
   const windowName = "settings";
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.addEventListener("mousedown", focusHandler);
