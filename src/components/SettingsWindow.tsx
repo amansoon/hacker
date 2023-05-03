@@ -9,21 +9,19 @@ import useClickOutside from "@/hooks/onclickoutside";
 import { ReactDropdownProps } from "react-dropdown";
 
 /* eslint-disable no-console */
-import Dropdown from 'rc-dropdown';
-import 'rc-dropdown/assets/index.css';
+import Dropdown from "rc-dropdown";
+import "rc-dropdown/assets/index.css";
+import { code } from "@/data/code";
 
 const fonts = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
 const colors = ["red", "blue", "orange", "yellow", "white"];
 
 type Props = {};
 
-
 type DropdownRef = {
-  props: ReactDropdownProps,
-  ref: RefObject<HTMLElement>
-}
-
-
+  props: ReactDropdownProps;
+  ref: RefObject<HTMLElement>;
+};
 
 function SettingsWindow({}: Props) {
   const [isFocused, setFocused] = useState(true);
@@ -94,15 +92,18 @@ function SettingsWindow({}: Props) {
     }
   };
 
+  const resetSourceHandler = () => {
+    localStorage.setItem("source", code);
+    dispatch({ type: ActionKind.SET_TYPER, payload: { source: code } });
+  };
 
   // useClickOutside(dropdownRef, () => {
   //      alert("Clicked outside")
   // }, [])
 
-
   const handleDropdownClick = () => {
-    console.log("dropdown-document-click")
-  }
+    console.log("dropdown-document-click");
+  };
 
   return (
     <WindowLayout title="Settings" isShow={isTyperSettings} close={close} isFocused={isFocused} windowName={windowName}>
@@ -182,7 +183,9 @@ function SettingsWindow({}: Props) {
           <div>
             <input type="file" className="window__upload" onChange={sourceHandler} />
           </div>
-          <div>Reset</div>
+          <div className="window__source-reset" onClick={resetSourceHandler}>
+            Reset
+          </div>
         </div>
       </div>
     </WindowLayout>

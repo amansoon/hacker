@@ -19,12 +19,6 @@ const WindowLayout = ({ children, title, isShow, isFocused, windowName, close }:
   const [zIndex, setZIndex] = useState(state.maxZI);
 
   useEffect(() => {
-    if (isShow) {
-      incrementZIndex();
-    }
-  }, [isShow]);
-
-  useEffect(() => {
     console.log(zIndex);
   }, [zIndex]);
 

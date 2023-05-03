@@ -80,10 +80,17 @@ button {
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 1rem 1rem 5rem;
+  border: 1px solid red;
+
+  /* filter: blur(2px); */
 }
 
 .code::-webkit-scrollbar {
   display: none;
+}
+
+.code:focus-within {
+  filter: blur(0);
 }
 
 .code-pre {
@@ -99,14 +106,16 @@ button {
 }
 
 .code-area {
-  position: absolute;
+  /* position: absolute;
   bottom: -100px;
   height: 0;
   width: 0;
   border: 0;
   outline: 0;
   opacity: 0;
-  overflow: hidden;
+  overflow: hidden; */
+  
+
 }
 
 .code-cursor {

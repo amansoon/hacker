@@ -93,7 +93,7 @@
   /* width: 100px; */
   padding: 0 1rem;
   outline: transparent;
-  border: 1px solid rgb(32, 32, 32);
+  border: 1px solid rgb(123, 123, 123);
   font-size: 1rem;
   font-family: inherit;
   margin-left: 20px;
@@ -250,4 +250,12 @@ input.window__upload::file-selector-button {
   margin-right: 0.75rem;
   outline: 0;
   border: 0;
+}
+
+.window__source-reset {
+  cursor: pointer;
+}
+
+.window__source-reset:hover {
+  text-decoration: underline;
 }

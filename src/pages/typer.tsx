@@ -20,7 +20,7 @@ import AboutWindow from "@/components/AboutWindow";
 
 export default function Home() {
   const { state, dispatch } = useAppContext();
-  const { fontFamily, speed, fontSize, color, source, isTyperSettings } = state;
+  const { fontFamily, speed, fontSize, color, source, isTyperSettings, windowCount } = state;
 
   const [text, setText] = useState("");
   const [cursor, setCursor] = useState(0);
@@ -28,12 +28,17 @@ export default function Home() {
   const codeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      if (textAreaRef.current) {
-        textAreaRef.current.focus();
-      }
-    });
+    document.addEventListener("keydown", keydownHandler);
+    return () => {
+      document.removeEventListener("keydown", keydownHandler);
+    };
   }, []);
+
+  const keydownHandler = () => {
+    if (textAreaRef.current) {
+      textAreaRef.current.focus();
+    }
+  };
 
   const addMoreText = () => {
     if (text.length < source.length) {
@@ -51,6 +56,7 @@ export default function Home() {
   }, [text]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
     addMoreText();
   };
 
