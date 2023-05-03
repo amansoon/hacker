@@ -22,10 +22,6 @@ function Header({}: Props) {
     }
   };
 
-  // useEffect(() => {
-  //   alert(screenfull.isFullscreen)
-  // }, [screenfull])
-
   return (
     <header className={`${css.header} ${!isHeader && css["header--hidden"]}`}>
       <div className={css.header__wrapper}>

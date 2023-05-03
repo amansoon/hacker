@@ -21,6 +21,7 @@ export default function Typer() {
   const { fontFamily, speed, fontSize, color, source, isTyperSettings, isHelpWindow, isAboutWindow } = state;
   const [text, setText] = useState("");
   const [cursor, setCursor] = useState(0);
+  const [isMenu, setMenu] = useState(true);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const codeRef = useRef<HTMLDivElement>(null);
 
@@ -55,8 +56,12 @@ export default function Typer() {
     e.preventDefault();
   };
 
-  const windowHandler = () => {
+  const toggleSettings = () => {
     dispatch({ type: ActionKind.SET_TYPER, payload: { isTyperSettings: !isTyperSettings } });
+  };
+
+  const toggleHelp = () => {
+    dispatch({ type: ActionKind.SET_TYPER, payload: { isHelpWindow: !isHelpWindow } });
   };
 
   return (
@@ -72,14 +77,19 @@ export default function Typer() {
       </div>
 
       {/* setting */}
-      <div className="code-setting">
-        <button>
-          <Feather.X size={20} />
-        </button>
-        <button onClick={() => windowHandler()}>
-          <Feather.Settings size={20} />
-        </button>
-      </div>
+      {isMenu && (
+        <div className="typer-menu">
+          <button className="typer-menu__item" onClick={() => setMenu(false)}>
+            <Feather.X size={20} strokeWidth={1.5} />
+          </button>
+          <button className="typer-menu__item" onClick={() => toggleHelp()}>
+            <Feather.Info size={20} strokeWidth={1.5} />
+          </button>
+          <button className="typer-menu__item" onClick={() => toggleSettings()}>
+            <Feather.Settings size={20} strokeWidth={1.5} />
+          </button>
+        </div>
+      )}
       {/* </div> */}
       {/* <Window /> */}
       <SettingsWindow />

@@ -9,6 +9,7 @@
 
   --window-bg: rgb(226, 226, 226);
   --window-color: rgb(169, 169, 169);
+  --window-border-thickness: 2px; 
 }
 
 *,

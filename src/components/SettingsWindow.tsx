@@ -25,13 +25,13 @@ function SettingsWindow({}: Props) {
     };
   }, []);
 
-  const focusHandler = (e: MouseEvent) => {
+  function focusHandler(e: MouseEvent) {
     if ((e.target as HTMLElement).closest(`.window--${windowName}`)) {
       setFocused(true);
     } else {
       setFocused(false);
     }
-  };
+  }
 
   useEffect(() => {
     if (isTyperSettings) {

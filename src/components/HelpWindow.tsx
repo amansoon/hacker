@@ -18,13 +18,13 @@ function HelpWindow({}: Props) {
     };
   }, []);
 
-  const focusHandler = (e: React.MouseEvent) => {
+  function focusHandler(e: MouseEvent) {
     if ((e.target as HTMLElement).closest(`.window--${windowName}`)) {
       setFocused(true);
     } else {
       setFocused(false);
     }
-  };
+  }
 
   useEffect(() => {
     if (isHelpWindow) {
@@ -36,7 +36,7 @@ function HelpWindow({}: Props) {
     console.log("Close");
     dispatch({ type: ActionKind.SET_TYPER, payload: { isHelpWindow: false } });
   };
-  
+
   return (
     <WindowLayout title="Help" isShow={isHelpWindow} close={close} isFocused={isFocused} windowName={windowName}>
       <p>

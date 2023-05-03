@@ -1,8 +1,8 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
-@import url('./global.css');
-@import url('./window.css');
+@import url("./global.css");
+@import url("./window.css");
 
 .code {
   position: relative;
@@ -82,7 +82,7 @@
   }
 }
 
-.code-setting {
+.typer-menu {
   position: fixed;
   right: 1rem;
   top: 1rem;
@@ -91,13 +91,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: 0.25rem;
 
-  padding: 0.875rem 1rem;
-  outline: 2px solid rgb(19, 19, 19);
+  padding: 0.5rem;
+  outline: 2px solid rgb(46, 46, 46);
 
   background: rgb(15, 15, 15);
   color: rgb(157, 157, 157);
 }
 
-/* ========== window styling =========== */
+.typer-menu__item {
+  display: flex;
+  padding: 0.75rem;
+  border-radius: 0.125rem;
+}
+
+.typer-menu__item:hover {
+  background-color: rgb(29, 29, 29);
+  color: rgb(243, 243, 243);
+}
