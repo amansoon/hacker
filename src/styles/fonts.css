@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap");
+
+/* Inconsolas */
+@font-face {
+  font-family: "Inconsolata";
+  src: url("/fonts/coding/Inconsolata.ttf");
+}
+
+/* fira code */
+@font-face {
+  font-family: "Fira Code";
+  src: url("/fonts/coding/FiraCode.ttf");
+}
+
+/* Source Code Pro */
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("/fonts/coding/SourceCodePro.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* anonymous pro */
+@font-face {
+  font-family: "Anonymous Pro";
+  src: url("/fonts/coding/AnonymousPro.ttf");
+}
+
+/* IBM Plex Mono */
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/coding/IBMPlexMono.ttf");
+}
+
+/* JetBrains mono */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/coding/JetBrainsMono.ttf");
+}
+
+/* Monoid */
+@font-face {
+  font-family: "Monoid";
+  src: url("/fonts/coding/Monoid.ttf");
+}
+
+/* cascadia code */
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("/fonts/coding/CascadiaCode.ttf");
+}
+
+/* Iosevka */
+@font-face {
+  font-family: "Iosevka";
+  src: url("/fonts/coding/Iosevka.ttf");
+}

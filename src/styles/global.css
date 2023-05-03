@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap");
 
 :root {
   --bg: black;
@@ -7,7 +6,7 @@
 
   --window-bg: rgb(226, 226, 226);
   --window-color: rgb(169, 169, 169);
-  --window-border-thickness: 2px; 
+  --window-border-thickness: 2px;
 }
 
 *,
@@ -18,9 +17,19 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(51, 51, 51);
+}
+
 body {
-  font-family: "Dina";
-  font-family: monospace;
   font-family: "Inconsolata", monospace;
   color: var(--color);
   background: black;

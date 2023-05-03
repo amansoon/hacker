@@ -1,7 +1,7 @@
 import { useReducer, createContext, ReactNode, useState, useEffect, useContext } from "react";
 import { State, ContextType, ActionKind } from "./types";
 import { reducer } from "./reducer";
-import { code } from "../data/code";
+import { code } from "../assets/data/typer";
 
 const initialState: State = {
   isFocus: true,

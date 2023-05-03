@@ -1,3 +1,4 @@
+@import url('./fonts.css');
 @import url("./global.css");
 @import url("./window.css");
 
@@ -9,21 +10,17 @@
   min-height: 100vh;
   height: 100%;
 
+  font-family: "Source Code Pro";
+
   background-color: var(--bg);
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 1rem 1rem 4rem;
-
-  /* filter: blur(2px); */
 }
 
 .code::-webkit-scrollbar {
   display: none;
 }
-
-/* .code:focus-within {
-  filter: blur(0);
-} */
 
 .code-pre {
   width: 100%;

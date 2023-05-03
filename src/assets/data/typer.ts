@@ -1958,28 +1958,44 @@ EXPORT_SYMBOL_GPL(pm_runtime_force_resume);
 // export const fonts = ["fira code", "menorope", "roboto", "Cascadia Mono", "Sans Serif", "Space Mono"];
 export const fonts = [
   {
-    label: "Fira Code",
-    value: "fira code",
+    label: `Courier`,
+    value: "Courier",
   },
   {
-    label: "Menorape",
-    value: "Menorope",
+    label: `Fira Code`,
+    value: "Fira code",
   },
   {
-    label: "Roboto",
-    value: "Roboto",
+    label: "Source Code Pro",
+    value: "Source Code Pro",
   },
   {
-    label: "Cascadia Mono",
-    value: "Cascadia Mono",
+    label: "Anonymous Pro",
+    value: "Anonymous Pro",
   },
   {
-    label: "Sans Serif",
-    value: "Sans Serif",
+    label: "Inconsolata",
+    value: "Inconsolata",
   },
   {
-    label: "Space Mono",
-    value: "Space Mono",
+    label: "IBM Plex Mono",
+    value: "IBM Plex Mono",
+  },
+  {
+    label: "JetBrains Mono",
+    value: "JetBrains Mono",
+  },
+  {
+    label: "Monoid",
+    value: "Monoid",
+  },
+  {
+    label: "Cascadia Code",
+    value: "Cascadia Code",
+  },
+  {
+    label: "Iosevka",
+    value: "Iosevka",
   },
 ];
 
