@@ -3,7 +3,7 @@ import WindowLayout from "./WindowLayout";
 import { useAppContext } from "@/context/context";
 import { ActionKind } from "@/context/types";
 import * as Feather from "react-feather";
-import ReactDropdown from "react-dropdown";
+import ReactDropdown, {Option} from "react-dropdown";
 import Slider from "rc-slider";
 
 /* eslint-disable no-console */
@@ -45,7 +45,7 @@ function SettingsWindow({}: Props) {
 
   // ============
 
-  const fontFamilyHandler = (data: { value: string; label: string }) => {
+  const fontFamilyHandler = (data: Option) => {
     localStorage.setItem("fontFamily", data.value);
     dispatch({ type: ActionKind.SET_TYPER, payload: { fontFamily: data.value } });
   };
