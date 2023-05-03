@@ -1,6 +1,8 @@
 import { Dispatch } from "react";
 
 export type State = {
+  isFocus: boolean,
+
   color: string;
   fontFamily: string;
   fontSize: number;
@@ -11,6 +13,7 @@ export type State = {
   isTyperSettings: boolean;
   isAboutWindow: boolean;
   isHelpWindow: boolean;
+  windowCount: number;
 };
 
 export type ContextType = {

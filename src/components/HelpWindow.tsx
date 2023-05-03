@@ -36,7 +36,7 @@ function HelpWindow({}: Props) {
     console.log("Close");
     dispatch({ type: ActionKind.SET_TYPER, payload: { isHelpWindow: false } });
   };
-
+  
   return (
     <WindowLayout title="Help" isShow={isHelpWindow} close={close} isFocused={isFocused} windowName={windowName}>
       <p>

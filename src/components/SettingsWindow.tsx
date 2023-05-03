@@ -37,7 +37,7 @@ function SettingsWindow({}: Props) {
     };
   }, []);
 
-  const focusHandler = (e: React.MouseEvent) => {
+  const focusHandler = (e: MouseEvent) => {
     if ((e.target as HTMLElement).closest(`.window--${windowName}`)) {
       setFocused(true);
     } else {

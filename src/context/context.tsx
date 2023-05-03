@@ -4,6 +4,8 @@ import { reducer } from "./reducer";
 import { code } from "../data/code";
 
 const initialState: State = {
+  isFocus: true,
+
   color: "green",
   fontFamily: "Fira Code",
   fontSize: 16,
@@ -12,8 +14,9 @@ const initialState: State = {
 
   maxZI: 1000,
   isTyperSettings: false,
-  isHelpWindow: true,
+  isHelpWindow: false,
   isAboutWindow: false,
+  windowCount: 0,
 };
 
 const context = createContext<ContextType>({ state: initialState } as ContextType);

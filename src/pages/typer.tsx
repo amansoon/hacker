@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { use, useCallback, useEffect, useRef, useState } from "react";
 import { code } from "@/data/code";
 
 /*
@@ -18,9 +18,9 @@ import HelpWindow from "@/components/HelpWindow";
 import SettingsWindow from "@/components/SettingsWindow";
 import AboutWindow from "@/components/AboutWindow";
 
-export default function Home() {
+export default function Typer() {
   const { state, dispatch } = useAppContext();
-  const { fontFamily, speed, fontSize, color, source, isTyperSettings, windowCount } = state;
+  const { fontFamily, speed, fontSize, color, source, isTyperSettings, isHelpWindow, isAboutWindow } = state;
 
   const [text, setText] = useState("");
   const [cursor, setCursor] = useState(0);
@@ -28,17 +28,27 @@ export default function Home() {
   const codeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    codeRef.current?.addEventListener("mouseup", clickHandler);
     document.addEventListener("keydown", keydownHandler);
+    codeRef.current?.removeEventListener("mouseup", clickHandler);
     return () => {
       document.removeEventListener("keydown", keydownHandler);
+      codeRef.current?.removeEventListener("mouseup", clickHandler);
     };
-  }, []);
+  }, [clickHandler]);
 
-  const keydownHandler = () => {
+  const keydownHandler = (e: KeyboardEvent) => {
+    addMoreText();
+    // if (textAreaRef.current) {
+    //   textAreaRef.current.focus();
+    // }
+  };
+
+  function clickHandler() {
     if (textAreaRef.current) {
       textAreaRef.current.focus();
     }
-  };
+  }
 
   const addMoreText = () => {
     if (text.length < source.length) {
@@ -51,13 +61,12 @@ export default function Home() {
   useEffect(() => {
     if (codeRef.current) {
       codeRef.current.scrollTop = codeRef.current.scrollHeight;
-      console.log(codeRef.current.scrollHeight);
     }
   }, [text]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
-    addMoreText();
+    // addMoreText();
   };
 
   const windowHandler = () => {
@@ -74,17 +83,18 @@ export default function Home() {
           <span>{text}</span>
           <span className="code-cursor">|</span>
         </pre>
-        {/* sidebar */}
-        <div className="code-setting">
-          <button>
-            <Feather.X size={20} />
-          </button>
-          <button onClick={() => windowHandler()}>
-            <Feather.Settings size={20} />
-          </button>
-        </div>
-        {/* </div> */}
       </div>
+
+      {/* setting */}
+      <div className="code-setting">
+        <button>
+          <Feather.X size={20} />
+        </button>
+        <button onClick={() => windowHandler()}>
+          <Feather.Settings size={20} />
+        </button>
+      </div>
+      {/* </div> */}
       {/* <Window /> */}
       <SettingsWindow />
       <HelpWindow />
